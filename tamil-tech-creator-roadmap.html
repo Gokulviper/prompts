@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tamil Tech Creator Roadmap — Zoho to 26 LPA, on camera</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;800&family=Noto+Sans+Tamil:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6FA; --ink:#171B33; --muted:#5B6078; --line:#D9DCE8;
+  --red:#C8102E; --saffron:#F2B705; --sea:#0E7C7B; --card:#FFFFFF; --soft:#ECEEF6;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:#15172A; --ink:#F1F2F8; --muted:#A7ABC2; --line:#2F3350;
+    --red:#FF4D63; --saffron:#FFD048; --sea:#3BC4C2; --card:#1D2039; --soft:#262A47; color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#15172A; --ink:#F1F2F8; --muted:#A7ABC2; --line:#2F3350;
+  --red:#FF4D63; --saffron:#FFD048; --sea:#3BC4C2; --card:#1D2039; --soft:#262A47; color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-behavior:smooth; scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--paper);color:var(--ink);
+  font-family:"Manrope","Noto Sans Tamil",system-ui,sans-serif;font-size:17px;line-height:1.55}
+a{color:var(--red)}
+h1,h2,h3{margin:0;line-height:1.15;letter-spacing:-0.01em}
+h1{font-size:clamp(2.1rem,6vw,4rem);font-weight:800}
+h2{font-size:clamp(1.5rem,3vw,2.1rem);font-weight:800}
+h3{font-size:1.1rem;font-weight:700}
+p{margin:.5rem 0}
+.wrap{max-width:1180px;margin:0 auto;padding:0 clamp(16px,4vw,40px)}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:48px}
+@media (max-width:860px){.layout{grid-template-columns:1fr;gap:0}}
+
+/* nav */
+nav.side{position:sticky;top:24px;align-self:start;padding-top:8px}
+nav.side ol{list-style:none;margin:0;padding:0;border-left:3px solid var(--line)}
+nav.side li a{display:block;padding:7px 14px;color:var(--muted);text-decoration:none;font-weight:600;font-size:.92rem;margin-left:-3px;border-left:3px solid transparent}
+nav.side li a:hover,nav.side li a:focus-visible{color:var(--ink);border-left-color:var(--red);outline:none}
+.progress{margin-top:28px;padding:14px;background:var(--card);border:1px solid var(--line);border-radius:12px;font-size:.9rem}
+.progress b{font-size:1.6rem;display:block;color:var(--red)}
+.bar{height:8px;background:var(--soft);border-radius:99px;overflow:hidden;margin-top:8px}
+.bar i{display:block;height:100%;width:0;background:var(--red);transition:width .3s}
+@media (max-width:860px){nav.side{display:none}}
+
+/* hero */
+header.hero{padding:clamp(48px,8vw,96px) 0 clamp(32px,5vw,56px)}
+.kicker{font-weight:600;color:var(--muted);margin-bottom:14px}
+.hero p.lede{font-size:1.2rem;max-width:62ch;color:var(--muted);margin-top:18px}
+.rail{margin-top:40px;display:grid;grid-template-columns:repeat(12,1fr);gap:4px;align-items:end}
+.rail div{height:48px;border-radius:6px;background:var(--soft);position:relative}
+.rail div span{position:absolute;left:6px;bottom:4px;font-size:.72rem;font-weight:700;color:var(--muted)}
+.rail .w0{background:var(--saffron)} .rail .w0 span{color:#3a2a00}
+.rail .zoho{background:var(--red)} .rail .zoho span{color:#fff}
+.rail .rhythm{background:var(--sea)} .rail .rhythm span{color:#fff}
+.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:10px;font-size:.88rem;color:var(--muted)}
+.legend em{font-style:normal;display:inline-block;width:12px;height:12px;border-radius:3px;vertical-align:-1px;margin-right:6px}
+
+/* sections */
+section{padding:clamp(36px,5vw,64px) 0;border-top:1px solid var(--line)}
+section .intro{color:var(--muted);max-width:68ch;margin-top:10px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:24px}
+@media (max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.card h3{margin-bottom:8px}
+.card ul{margin:8px 0 0;padding-left:18px}
+.card li{margin:4px 0}
+.callout{border-left:5px solid var(--saffron);background:var(--card);padding:16px 20px;border-radius:0 12px 12px 0;margin-top:20px}
+.callout.red{border-left-color:var(--red)}
+.tamil{font-family:"Noto Sans Tamil","Manrope",sans-serif}
+
+/* pillars */
+.pillars{margin-top:24px}
+.pbar{display:flex;height:40px;border-radius:10px;overflow:hidden;border:1px solid var(--line)}
+.pbar div{display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:.9rem}
+.p1{background:var(--red)} .p2{background:#8A1538} .p3{background:var(--sea)} .p4{background:#4B5A9E} .p5{background:var(--saffron);color:#3a2a00!important}
+.plist{list-style:none;padding:0;margin:16px 0 0;display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px}
+.plist li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:.95rem}
+.plist li strong{display:block}
+.plist li em{color:var(--muted);font-style:normal;font-size:.85rem}
+
+/* timeline */
+.timeline{list-style:none;margin:28px 0 0;padding:0;border-left:3px solid var(--line);margin-left:10px}
+.timeline li{position:relative;padding:0 0 28px 28px}
+.timeline li::before{content:"";position:absolute;left:-10px;top:6px;width:17px;height:17px;border-radius:50%;background:var(--paper);border:4px solid var(--red)}
+.timeline li.gold::before{border-color:var(--saffron)}
+.timeline li.sea::before{border-color:var(--sea)}
+.timeline .when{font-weight:800;color:var(--red)}
+.timeline li.gold .when{color:#9a7400} .timeline li.sea .when{color:var(--sea)}
+.timeline ul{margin:8px 0 0;padding-left:18px;color:var(--ink)}
+.timeline li p{color:var(--muted);margin:4px 0 0}
+
+/* week table */
+.week{display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin-top:24px}
+@media (max-width:760px){.week{grid-template-columns:repeat(2,1fr)}}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px;min-height:150px}
+.day b{display:block;font-size:.85rem;color:var(--muted);margin-bottom:6px}
+.day strong{display:block;margin-bottom:4px}
+.day small{color:var(--muted);display:block;line-height:1.4}
+.day.post{border-top:5px solid var(--red)}
+.day.vlog{border-top:5px solid var(--saffron)}
+.day.shoot{border-top:5px solid var(--sea)}
+
+/* checklist */
+.videos{margin-top:24px;display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:760px){.videos{grid-template-columns:1fr}}
+.videos label{display:flex;gap:12px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer}
+.videos label:has(input:checked){background:var(--soft);text-decoration:line-through;color:var(--muted)}
+.videos input{margin-top:5px;width:18px;height:18px;accent-color:var(--red);flex:none}
+.videos .t{font-weight:600}
+.videos .m{display:block;font-size:.85rem;color:var(--muted);text-decoration:none}
+.tag{display:inline-block;font-size:.75rem;font-weight:700;padding:2px 8px;border-radius:99px;background:var(--soft);color:var(--muted);margin-left:6px;vertical-align:1px}
+
+/* metrics */
+table{width:100%;border-collapse:collapse;margin-top:20px;background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+th,td{text-align:left;padding:12px 14px;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--soft);font-size:.9rem}
+tr:last-child td{border-bottom:none}
+.scroll{overflow-x:auto}
+.num{font-weight:800;color:var(--red);white-space:nowrap}
+
+footer{padding:40px 0 60px;color:var(--muted);font-size:.9rem}
+button.reset{font:inherit;font-size:.85rem;background:none;border:1px solid var(--line);color:var(--muted);border-radius:8px;padding:6px 10px;cursor:pointer;margin-top:10px}
+button.reset:focus-visible{outline:2px solid var(--red)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header class="hero">
+  <div class="kicker">Creator roadmap · YouTube + Instagram · Tamil tech careers</div>
+  <h1>Zoho-la start. 26 LPA-la nikkala. Ippo camera-la sollu.</h1>
+  <p class="lede">A 90-day plan for a Tamil tech channel that no one is currently running: insider career stories, interview depth (DSA + system design), AI survival, weekly news, and a light day-in-life vlog. Built around how YouTube and Instagram actually rank content in late 2026.</p>
+  <div class="rail" aria-label="12-week overview">
+    <div class="w0"><span>W0 prep</span></div>
+    <div class="zoho"><span>W1 Zoho</span></div>
+    <div class="zoho"><span>W2 Zoho</span></div>
+    <div class="rhythm"><span>W3</span></div>
+    <div class="rhythm"><span>W4</span></div>
+    <div class="rhythm"><span>W5</span></div>
+    <div class="rhythm"><span>W6</span></div>
+    <div class="rhythm"><span>W7</span></div>
+    <div class="rhythm"><span>W8 review</span></div>
+    <div class="rhythm"><span>W9</span></div>
+    <div class="rhythm"><span>W10</span></div>
+    <div class="rhythm"><span>W12 live</span></div>
+  </div>
+  <div class="legend">
+    <span><em style="background:var(--saffron)"></em>Batch-record, nothing public</span>
+    <span><em style="background:var(--red)"></em>Zoho launch series</span>
+    <span><em style="background:var(--sea)"></em>Weekly rhythm (Mon / Thu / Sat + Shorts)</span>
+  </div>
+</header>
+
+<div class="layout">
+<nav class="side" aria-label="Sections">
+  <ol>
+    <li><a href="#gap">The gap</a></li>
+    <li><a href="#position">Positioning</a></li>
+    <li><a href="#pillars">Pillars</a></li>
+    <li><a href="#timeline">90-day timeline</a></li>
+    <li><a href="#week">Weekly rhythm</a></li>
+    <li><a href="#videos">First 30 videos</a></li>
+    <li><a href="#shorts">Shorts &amp; Reels</a></li>
+    <li><a href="#metrics">Metrics</a></li>
+    <li><a href="#money">Monetisation</a></li>
+    <li><a href="#rules">Rules</a></li>
+  </ol>
+  <div class="progress">
+    Videos published
+    <b><span id="done">0</span>/30</b>
+    <div class="bar"><i id="barfill"></i></div>
+    <button class="reset" id="reset" type="button">Clear ticks</button>
+  </div>
+</nav>
+
+<main>
+<section id="gap">
+  <h2>Where the Tamil tech space has a hole</h2>
+  <p class="intro">Four clusters exist today. You belong in the fourth, which is nearly empty.</p>
+  <div class="grid2">
+    <div class="card"><h3>Gadget channels</h3><p>Tamil Tech (~4.5M), Tech Boss, A2D. Phone reviews. Trained the audience to expect energetic Tanglish and loud thumbnails. Not competition.</p></div>
+    <div class="card"><h3>Tutorial channels that are edtech funnels</h3><p>Error Makes Clever (1M+), GUVI, Tamil Programmer. Beginner playlists that end in a bootcamp pitch. They do not talk about working in tech, packages, or specific companies.</p></div>
+    <div class="card"><h3>Job-update aggregators</h3><p>Sharmilan Vipokan and similar. “Zoho hiring, apply link”, guest interview experiences, Telegram and WhatsApp funnels, paid mentoring. High volume, low depth, dependent on search.</p></div>
+    <div class="card"><h3>Working engineers on camera</h3><p>CS in Tamil (Google engineer), Data Engineering Tamil. Credible, but infrequent and no career/interview/vlog content. This is the cluster you take over.</p></div>
+  </div>
+  <div class="callout red">
+    <strong>Nobody in Tamil combines:</strong> proof of a strong outcome, candid named-company insight, and interview-depth teaching (system design, DSA patterns). The Zoho videos ranking today are 3–6 years old and fresher-only. Zoho cancelled 2026 hikes in October — the topic is hot right now.
+  </div>
+</section>
+
+<section id="position">
+  <h2>Positioning</h2>
+  <p class="intro">Others are teachers or aggregators. You are the insider friend who already made it, showing the real game in Tamil.</p>
+  <div class="grid3">
+    <div class="card"><h3>Proof on screen</h3><p>Redacted offer letter, LeetCode profile, interview calendar. Tamil viewers are sceptical of “26 LPA” claims — receipts beat charisma.</p></div>
+    <div class="card"><h3>Specific and named</h3><p>Real round structures, real salary bands, what actually gets asked. Aggregators stay generic to avoid risk; you can be specific because you lived it.</p></div>
+    <div class="card"><h3>Depth, not basics</h3><p>EMC owns “what is a for loop”. You own “I can code — how do I get 15–30 LPA”. That segment in Chennai is bigger than it looks.</p></div>
+  </div>
+  <div class="callout">
+    <strong>Channel promise (bio + trailer):</strong>
+    <p class="tamil">“Zoho-la start panni 26 LPA varaikum — nadanthadhu, nadakkaadhadhu, nadakka vendiyadhu. Tech career in Tamil, no sugar coating.”</p>
+  </div>
+</section>
+
+<section id="pillars">
+  <h2>Content pillars and the ratio</h2>
+  <p class="intro">The vlog is the glue, not the product. Keep it at 15% so it builds connection without diluting the channel.</p>
+  <div class="pillars">
+    <div class="pbar" aria-label="Pillar ratio">
+      <div class="p1" style="flex:30">30%</div>
+      <div class="p2" style="flex:30">30%</div>
+      <div class="p3" style="flex:15">15%</div>
+      <div class="p4" style="flex:10">10%</div>
+      <div class="p5" style="flex:15">15%</div>
+    </div>
+    <ul class="plist">
+      <li><strong>Career stories &amp; insider</strong><em>Zoho series, offer stories, salary truth. Growth and authority.</em></li>
+      <li><strong>Interview cracking</strong><em>DSA patterns, system design in Tamil, HR, resume, “what changed in 2026”. Search and saves.</em></li>
+      <li><strong>AI impact &amp; survival</strong><em>Tools you use at work, what is being automated, what to learn next.</em></li>
+      <li><strong>Tech news in Tamil</strong><em>Weekly, opinionated, 8–10 min. Brings people back.</em></li>
+      <li><strong>Day-in-life vlog</strong><em>Phone-shot, one narrative question per episode. Fuel for Reels.</em></li>
+    </ul>
+  </div>
+</section>
+
+<section id="timeline">
+  <h2>90-day timeline</h2>
+  <p class="intro">Front-load the Zoho series so you launch with a hook and a buffer, then settle into a rhythm you can sustain alongside a full-time job.</p>
+  <ol class="timeline">
+    <li class="gold">
+      <div class="when">Week 0 — prep, nothing public</div>
+      <ul>
+        <li>Record the 60-second trailer: who you are, the 26 LPA proof, what you will post.</li>
+        <li>Batch-shoot all five Zoho videos. Edit two before publishing anything.</li>
+        <li>Set up Telegram or WhatsApp community link, Instagram handle, channel art, playlists (empty is fine).</li>
+        <li>Re-read your exit agreement. Decide the no-go list: internal code, unreleased products, named colleagues.</li>
+      </ul>
+    </li>
+    <li>
+      <div class="when">Weeks 1–2 — the Zoho launch series</div>
+      <ul>
+        <li>Publish five videos, Mon/Thu, in the order listed under “First 30 videos”.</li>
+        <li>Cut 8–10 Shorts/Reels from them: one claim each, hook in 1.5 s, Tamil on-screen text, “full video channel-la”.</li>
+        <li>Pin the trailer and the Zoho playlist on the channel page.</li>
+      </ul>
+      <p>Goal: first 500 subscribers and the Zoho playlist ranking in search.</p>
+    </li>
+    <li class="sea">
+      <div class="when">Weeks 3–7 — weekly rhythm</div>
+      <ul>
+        <li>Mon interview/skill video, Thu career/AI/news video, Sat vlog, 4–5 Shorts/Reels, one Instagram carousel.</li>
+        <li>Start the two flagship playlists: “DSA in Tamil – 30 Patterns” and “System Design in Tamil”.</li>
+        <li>Reply to every comment for the first 60 days. Comments are the heaviest engagement signal.</li>
+      </ul>
+    </li>
+    <li class="sea">
+      <div class="when">Week 8 — first review</div>
+      <ul>
+        <li>Check 30-second hold, average retention, CTR, Shorts completion, Telegram joins.</li>
+        <li>Double down on the two best-performing formats; drop or rework the worst one.</li>
+        <li>Ask the community (poll) which company series they want next.</li>
+      </ul>
+    </li>
+    <li class="sea">
+      <div class="when">Weeks 9–12 — compound</div>
+      <ul>
+        <li>Launch the monthly live mock interview with a viewer (free). Nobody in Tamil does this.</li>
+        <li>Second company series (Freshworks, Chargebee, or a service MNC — whichever the poll picks).</li>
+        <li>Collaborate once with a mid-size Tamil career or coding creator (podcast-style, 30 min).</li>
+      </ul>
+      <p>Goal by day 90: 60+ public videos, 3 playlists with 5+ videos, measurable Shorts → long-form conversion, 1,000+ community members.</p>
+    </li>
+  </ol>
+</section>
+
+<section id="week">
+  <h2>Weekly rhythm</h2>
+  <p class="intro">Three long-form uploads a week is the growth sweet spot; Shorts at 25–40% of uploads. Batch so the week never depends on one free evening.</p>
+  <div class="week">
+    <div class="day post"><b>Monday</b><strong>Interview / skill</strong><small>8–14 min. Alternate weeks: DSA pattern (one Zoho-style + one product-company question) and system design in Tamil (URL shortener, rate limiter, chat app).</small></div>
+    <div class="day"><b>Tuesday</b><strong>Shorts ×2</strong><small>Cut from Monday’s video. Shoot 3–4 min of vlog B-roll.</small></div>
+    <div class="day"><b>Wednesday</b><strong>Edit night</strong><small>Thursday video + Saturday vlog rough cut. Instagram carousel (round structure, roadmap, pattern cheat-sheet).</small></div>
+    <div class="day post"><b>Thursday</b><strong>Career / AI / news</strong><small>8–12 min. Rotate: insider story, “AI took this from my job this week”, weekly tech news reaction.</small></div>
+    <div class="day"><b>Friday</b><strong>Shorts ×2</strong><small>One cut from Thursday, one native (salary myth, “interviewer asked me this”).</small></div>
+    <div class="day vlog"><b>Saturday</b><strong>Vlog</strong><small>10–15 min from the week’s B-roll: commute, standup, a bug, lunch, evening prep. One narrative question per episode.</small></div>
+    <div class="day shoot"><b>Sunday</b><strong>Shoot day</strong><small>Record both talking-head videos for next week. One Reel native to Instagram. Plan next week’s hooks.</small></div>
+  </div>
+</section>
+
+<section id="videos">
+  <h2>First 30 videos</h2>
+  <p class="intro">Titles are English-first with a Tamil hook word for search + click-through. Tick as you publish; ticks are saved in this browser.</p>
+  <div class="videos" id="videos">
+    <!-- Zoho launch series -->
+    <label><input type="checkbox" data-v="1"><span><span class="t">Zoho-la eppadi crack pannen — full round-by-round breakdown (2026 update)</span><span class="tag">Zoho</span><span class="m">Search magnet. Aptitude → programming → advanced → tech HR → general HR. What changed vs 2020.</span></span></label>
+    <label><input type="checkbox" data-v="2"><span><span class="t">Zoho hike cancel: insider-ah irundha naan sollradhu</span><span class="tag">Zoho</span><span class="m">Ride the October 2026 news. Calm, factual, what it means for freshers and 2–4 YOE.</span></span></label>
+    <label><input type="checkbox" data-v="3"><span><span class="t">Why I quit Zoho</span><span class="tag">Zoho</span><span class="m">The emotional one. Honest, respectful, specific. No names, no internals.</span></span></label>
+    <label><input type="checkbox" data-v="4"><span><span class="t">Zoho yaaru choose pannanum, yaaru pannakoodadhu</span><span class="tag">Zoho</span><span class="m">Decision framework: who should join, who should skip, who should leave after 2 years.</span></span></label>
+    <label><input type="checkbox" data-v="5"><span><span class="t">Zoho-la irundhu 26 LPA offer: exact 6-month roadmap</span><span class="tag">Zoho</span><span class="m">Bridge to the interview pillar. Show the calendar, the problem count, the mock schedule.</span></span></label>
+    <!-- Interview depth -->
+    <label><input type="checkbox" data-v="6"><span><span class="t">DSA in Tamil #1 — Sliding window: 2 questions, 1 pattern</span><span class="tag">DSA</span></span></label>
+    <label><input type="checkbox" data-v="7"><span><span class="t">System Design in Tamil #1 — URL shortener, interviewer expectations</span><span class="tag">System design</span></span></label>
+    <label><input type="checkbox" data-v="8"><span><span class="t">26 LPA offer: the exact questions asked in each round</span><span class="tag">Career</span></span></label>
+    <label><input type="checkbox" data-v="9"><span><span class="t">Interview process 2022 vs 2026 — enna maaruchu?</span><span class="tag">Interview</span><span class="m">AI-assisted rounds, fewer openings, take-homes. The “nowadays” video.</span></span></label>
+    <label><input type="checkbox" data-v="10"><span><span class="t">Day in my life: product company engineer, Chennai</span><span class="tag">Vlog</span></span></label>
+    <label><input type="checkbox" data-v="11"><span><span class="t">DSA in Tamil #2 — Two pointers (and when it beats sliding window)</span><span class="tag">DSA</span></span></label>
+    <label><input type="checkbox" data-v="12"><span><span class="t">AI naa job pochu? Naan daily use pannra 5 AI tools</span><span class="tag">AI</span></span></label>
+    <label><input type="checkbox" data-v="13"><span><span class="t">Resume that got me 6 interview calls — line by line</span><span class="tag">Interview</span></span></label>
+    <label><input type="checkbox" data-v="14"><span><span class="t">System Design in Tamil #2 — Rate limiter</span><span class="tag">System design</span></span></label>
+    <label><input type="checkbox" data-v="15"><span><span class="t">Tamil Tech News weekly #1 — my take, 8 minutes</span><span class="tag">News</span></span></label>
+    <label><input type="checkbox" data-v="16"><span><span class="t">Vlog: the bug that ate my Wednesday</span><span class="tag">Vlog</span></span></label>
+    <label><input type="checkbox" data-v="17"><span><span class="t">DSA in Tamil #3 — Hashing: the 20% that covers 80% of questions</span><span class="tag">DSA</span></span></label>
+    <label><input type="checkbox" data-v="18"><span><span class="t">Salary truth: Zoho vs service MNC vs product company (real numbers)</span><span class="tag">Career</span></span></label>
+    <label><input type="checkbox" data-v="19"><span><span class="t">HR round: 7 questions, my actual answers</span><span class="tag">Interview</span></span></label>
+    <label><input type="checkbox" data-v="20"><span><span class="t">System Design in Tamil #3 — Chat app (WhatsApp lite)</span><span class="tag">System design</span></span></label>
+    <label><input type="checkbox" data-v="21"><span><span class="t">What gets automated first in a dev team — I watched it happen</span><span class="tag">AI</span></span></label>
+    <label><input type="checkbox" data-v="22"><span><span class="t">Vlog: Sunday shoot day + how I plan the week</span><span class="tag">Vlog</span></span></label>
+    <label><input type="checkbox" data-v="23"><span><span class="t">DSA in Tamil #4 — Binary search on answer</span><span class="tag">DSA</span></span></label>
+    <label><input type="checkbox" data-v="24"><span><span class="t">Mistakes I made in my first 3 interviews after Zoho</span><span class="tag">Career</span></span></label>
+    <label><input type="checkbox" data-v="25"><span><span class="t">Tamil Tech News weekly #2</span><span class="tag">News</span></span></label>
+    <label><input type="checkbox" data-v="26"><span><span class="t">System Design in Tamil #4 — Notification service</span><span class="tag">System design</span></span></label>
+    <label><input type="checkbox" data-v="27"><span><span class="t">Freshers 2026: 3 realistic paths into tech (no bootcamp pitch)</span><span class="tag">Career</span></span></label>
+    <label><input type="checkbox" data-v="28"><span><span class="t">DSA in Tamil #5 — Trees: traversal to BFS/DFS patterns</span><span class="tag">DSA</span></span></label>
+    <label><input type="checkbox" data-v="29"><span><span class="t">Live mock interview with a viewer (announcement + first session)</span><span class="tag">Live</span></span></label>
+    <label><input type="checkbox" data-v="30"><span><span class="t">Day 60 review: numbers, what worked, what I’m changing</span><span class="tag">Meta</span><span class="m">Transparency builds trust and gives you a Short-friendly stats video.</span></span></label>
+  </div>
+</section>
+
+<section id="shorts">
+  <h2>Shorts &amp; Reels playbook</h2>
+  <p class="intro">Shorts and long-form rank on separate engines now: Shorts bring strangers in; long-form keeps them and earns. Treat Shorts as top of funnel, not as a channel of their own.</p>
+  <div class="grid2">
+    <div class="card">
+      <h3>YouTube Shorts</h3>
+      <ul>
+        <li>Target completion: 65% for under-30 s, 50% for 30–60 s. Under 30 s is the default.</li>
+        <li>Original only: your face, your claim, your edit. Re-uploads lose reach since October 2026.</li>
+        <li>Set Related Video on every Short to its parent long-form.</li>
+        <li>Aim for 0.5–1% Shorts → long-form conversion; most channels sit at 0.04%.</li>
+        <li>Pin a Community post that routes new visitors to the Zoho playlist.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Instagram</h3>
+      <ul>
+        <li>Saves and shares are the strongest signals. Educational Reels and carousels earn the most saves.</li>
+        <li>Post Reels natively (no watermark); Instagram deprioritises obvious cross-posts.</li>
+        <li>15–30 s Reels for growth; 60–90 s allowed when teaching.</li>
+        <li>One carousel a week: round structure, 6-month roadmap, pattern cheat-sheet.</li>
+        <li>Stories: behind the scenes, polls on next topic. Low reach, high loyalty.</li>
+      </ul>
+    </div>
+  </div>
+  <div class="callout">
+    <strong>Short formulas that fit you:</strong> “Interviewer asked me this at [company]” · “Salary myth #N” · “One AI thing that saved me an hour today” · “Zoho fact nobody tells freshers” · “DSA pattern in 25 seconds”. Hook in 1.5 seconds with Tamil on-screen text; end with “full video channel-la”.
+  </div>
+</section>
+
+<section id="metrics">
+  <h2>Metrics to watch monthly</h2>
+  <div class="scroll">
+  <table>
+    <thead><tr><th>Signal</th><th>Target</th><th>If it misses</th></tr></thead>
+    <tbody>
+      <tr><td>30-second hold (long-form)</td><td class="num">≥70%</td><td>Rewrite openings: state the payoff in the first sentence, cut the intro.</td></tr>
+      <tr><td>Average retention (long-form)</td><td class="num">40–50%</td><td>Find the dip in the retention graph and cut that segment type next time.</td></tr>
+      <tr><td>Browse CTR</td><td class="num">5–8%</td><td>Thumbnail: face + one number + one Tamil word. Test two titles.</td></tr>
+      <tr><td>Shorts completion (&lt;30 s)</td><td class="num">≥65%</td><td>Shorter, one claim only, text on screen from frame one.</td></tr>
+      <tr><td>Shorts → long-form conversion</td><td class="num">0.5–1%</td><td>Related Video set? Pinned comment pointing to the playlist?</td></tr>
+      <tr><td>Instagram saves + shares per reach</td><td class="num">rising</td><td>More carousels, more “save this for your interview” framing.</td></tr>
+      <tr><td>Community joins per video</td><td class="num">rising</td><td>Your real audience size. Mention the link once, with a reason, in every video.</td></tr>
+      <tr><td>Watch hours (365-day)</td><td class="num">8,000 by month 12</td><td>Monetisation bar from February 2027. Long-form watch time is the lever.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="money">
+  <h2>Monetisation path</h2>
+  <div class="grid3">
+    <div class="card"><h3>Months 1–6</h3><p>Nothing. No affiliates, no course. Build trust and watch hours. Your edge is being the insider, not the institute.</p></div>
+    <div class="card"><h3>Months 6–12</h3><p>Paid mock interviews and resume reviews (Topmate-style). Monthly live mock stays free. Channel memberships once eligible.</p></div>
+    <div class="card"><h3>Year 2</h3><p>A small cohort on “Zoho → product company switch”. Keep it small and outcome-based so it never turns the channel into a funnel.</p></div>
+  </div>
+</section>
+
+<section id="rules">
+  <h2>Rules that protect the channel</h2>
+  <div class="grid2">
+    <div class="card">
+      <h3>Legal and reputation</h3>
+      <ul>
+        <li>Zoho content covers process, culture, growth, compensation ranges, and your decision. Never internal code, unreleased products, or named individuals.</li>
+        <li>Receipts for every number you claim. Redact, but show.</li>
+        <li>Disagree with companies, not people.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h3>Sustainability</h3>
+      <ul>
+        <li>Vlog footage: 3–4 usable minutes a day is enough. Do not shoot all day.</li>
+        <li>News gets views; interview content gets subscribers. Keep the ratio.</li>
+        <li>Two-video buffer at all times. Never publish on the day you edit.</li>
+        <li>Reply to comments for 20 minutes a day, then stop.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+</main>
+</div>
+
+<footer class="wrap">
+  Roadmap drafted 25 October 2026. Algorithm thresholds (Shorts completion, 3 long-form/week, Feb 2027 monetisation bar, originality ranking) reflect published guidance at that date; re-check them at the week-8 review.
+</footer>
+
+<script>
+(function(){
+  var KEY='ttc-roadmap-ticks';
+  var boxes=document.querySelectorAll('#videos input[type=checkbox]');
+  var done=document.getElementById('done'), fill=document.getElementById('barfill');
+  function load(){ try{ var s=JSON.parse(localStorage.getItem(KEY)||'{}'); boxes.forEach(function(b){ b.checked=!!s[b.dataset.v]; }); }catch(e){} }
+  function save(){ try{ var s={}; boxes.forEach(function(b){ if(b.checked) s[b.dataset.v]=1; }); localStorage.setItem(KEY,JSON.stringify(s)); }catch(e){} }
+  function render(){ var n=0; boxes.forEach(function(b){ if(b.checked) n++; }); done.textContent=n; fill.style.width=(n/boxes.length*100)+'%'; }
+  boxes.forEach(function(b){ b.addEventListener('change',function(){ save(); render(); }); });
+  document.getElementById('reset').addEventListener('click',function(){ boxes.forEach(function(b){ b.checked=false; }); save(); render(); });
+  load(); render();
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Personal OS — Daily Planner</title>
+<style>
+:root{--bg:#f5f7fb;--panel:#fff;--ink:#172033;--muted:#687386;--line:#e4e8f0;--accent:#4f46e5;--accent-soft:#eef2ff;--green:#16845b;--amber:#a15c00;--red:#b42318;--shadow:0 8px 28px rgba(28,39,65,.06)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:1px solid var(--line);background:#fff;border-radius:10px;padding:9px 12px;color:var(--ink)}button:hover{border-color:#b9c0d0}button.primary{background:var(--accent);border-color:var(--accent);color:#fff}button.danger{color:var(--red)}input,select,textarea{width:100%;border:1px solid var(--line);border-radius:10px;padding:10px;background:#fff;color:var(--ink)}textarea{min-height:76px;resize:vertical}label{display:block;color:var(--muted);font-size:12px;font-weight:700;margin-bottom:5px}.app{max-width:1250px;margin:auto;padding:22px}.top{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:20px}.brand{display:flex;align-items:center;gap:12px}.logo{width:44px;height:44px;border-radius:14px;background:var(--accent);color:white;display:grid;place-items:center;font-weight:800;font-size:20px}.eyebrow{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:.09em;font-weight:800}.top h1{margin:1px 0;font-size:24px;letter-spacing:-.04em}.top-actions{display:flex;gap:8px;flex-wrap:wrap}.layout{display:grid;grid-template-columns: minmax(0,1.55fr) minmax(290px,.85fr);gap:18px}.stack{display:grid;gap:18px;align-content:start}.card{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:var(--shadow);min-width:0}.card-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:13px}.card h2{font-size:17px;letter-spacing:-.02em;margin:0}.card h3{font-size:14px;margin:0 0 8px}.muted{color:var(--muted)}.small{font-size:12px}.row{display:flex;gap:10px;align-items:center}.between{justify-content:space-between}.fields{display:grid;grid-template-columns:1fr 1fr;gap:12px}.fields .full{grid-column:1/-1}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:18px}.stat{background:#fff;border:1px solid var(--line);border-radius:14px;padding:14px}.stat .num{font-size:25px;font-weight:800;letter-spacing:-.05em}.stat .caption{font-size:12px;color:var(--muted)}.progress{height:7px;border-radius:20px;background:#eceff5;overflow:hidden;margin-top:9px}.progress span{display:block;height:100%;background:var(--accent);width:0;transition:width .2s}.pill{display:inline-flex;padding:4px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent);font-size:11px;font-weight:800}.section-list{display:grid;gap:8px}.task{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:10px;align-items:start;border:1px solid var(--line);padding:11px;border-radius:12px}.task input[type=checkbox]{width:17px;height:17px;margin-top:3px;accent-color:var(--accent)}.task.done .task-title{text-decoration:line-through;color:var(--muted)}.task-title{font-weight:650;overflow-wrap:anywhere}.task-meta{font-size:12px;color:var(--muted);margin-top:2px}.task-actions{display:flex;gap:5px}.icon-btn{padding:4px 7px;font-size:12px}.empty{padding:22px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:12px}.timeline{display:grid;gap:8px}.block{display:grid;grid-template-columns:95px 1fr;gap:10px;padding:11px;border:1px solid var(--line);border-radius:12px}.block-time{font-size:12px;color:var(--muted);font-weight:750}.block-title{font-weight:700}.block-desc{font-size:12px;color:var(--muted)}.rule{display:flex;gap:9px;align-items:flex-start;padding:9px 0;border-bottom:1px solid var(--line)}.rule:last-child{border-bottom:0}.rule input{width:17px;margin-top:3px;accent-color:var(--accent)}.rule-text{flex:1}.rule-title{font-weight:650}.rule-note{font-size:12px;color:var(--muted)}.rule-actions{display:flex;gap:4px}.tabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}.tab{background:transparent}.tab.active{background:var(--accent-soft);border-color:#c7d2fe;color:var(--accent)}.view{display:none}.view.active{display:block}.note{background:#fffbeb;border:1px solid #f6e4a7;color:#76530b;padding:12px;border-radius:12px;font-size:13px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#172033;color:#fff;padding:10px 16px;border-radius:10px;opacity:0;pointer-events:none;transition:opacity .2s;z-index:10}.toast.show{opacity:1}.footer{color:var(--muted);font-size:12px;text-align:center;padding:22px}.hidden{display:none!important}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.top{align-items:flex-start;flex-direction:column}.top-actions{width:100%}.top-actions button{flex:1}.app{padding:13px}.stats{gap:7px}.stat{padding:10px}.stat .num{font-size:22px}}
+@media(max-width:480px){.fields{grid-template-columns:1fr}.fields .full{grid-column:auto}.card{padding:14px}.block{grid-template-columns:78px 1fr}.task{grid-template-columns:20px minmax(0,1fr)}.task-actions{grid-column:2}.stats .caption{font-size:11px}}
+@media print{body{background:#fff}.app{max-width:none;padding:0}.top-actions,.tabs,button,.task-actions,.footer{display:none!important}.layout{grid-template-columns:1fr 1fr}.card,.stat{box-shadow:none;break-inside:avoid}.view{display:block!important}}
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="top">
+    <div class="brand"><div class="logo">P</div><div><div class="eyebrow">Your personal operating system</div><h1>Daily Command Center</h1><div class="muted small">Plan intentionally. Execute calmly. Recover without guilt.</div></div></div>
+    <div class="top-actions">
+      <button id="todayBtn">Today</button>
+      <button id="exportBtn">Export backup</button>
+      <button id="printBtn">Print / PDF</button>
+    </div>
+  </header>
+
+  <div class="stats">
+    <div class="stat"><div class="caption">Tasks completed</div><div class="num" id="statTasks">0/0</div><div class="progress"><span id="taskProgress"></span></div></div>
+    <div class="stat"><div class="caption">Daily rules</div><div class="num" id="statRules">0/0</div><div class="progress"><span id="ruleProgress"></span></div></div>
+    <div class="stat"><div class="caption">Focus sessions</div><div class="num" id="statSessions">0</div><div class="caption">Logged today</div></div>
+  </div>
+
+  <nav class="tabs">
+    <button class="tab active" data-tab="today">Today</button>
+    <button class="tab" data-tab="plan">Build daily plan</button>
+    <button class="tab" data-tab="rules">Common rules</button>
+    <button class="tab" data-tab="inbox">Idea inbox</button>
+    <button class="tab" data-tab="review">Daily / weekly review</button>
+  </nav>
+
+  <section class="view active" id="view-today">
+    <div class="layout">
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><div><h2 id="todayHeading">Today's plan</h2><div class="muted small" id="todaySub">Your plan, your pace.</div></div><span class="pill" id="dayModePill">NORMAL DAY</span></div>
+          <div class="fields">
+            <div><label for="planDate">DATE</label><input id="planDate" type="date"></div>
+            <div><label for="dayMode">DAY TYPE</label><select id="dayMode"><option value="normal">Normal day</option><option value="busy">Busy workday</option><option value="low">Low energy / recovery</option><option value="trip">Trip / personal commitment</option><option value="creative">YouTube production day</option></select></div>
+            <div class="full"><label for="mainOutcome">MAIN OUTCOME</label><input id="mainOutcome" placeholder="What one result would make today successful?"></div>
+            <div><label for="energy">ENERGY</label><select id="energy"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option><option value="exhausted">Exhausted</option></select></div>
+            <div><label for="available">AVAILABLE PERSONAL TIME</label><select id="available"><option value="30">30 minutes</option><option value="60" selected>1 hour</option><option value="120">2 hours</option><option value="180">3+ hours</option><option value="0">None today</option></select></div>
+            <div class="full"><label for="constraints">TODAY'S CONSTRAINTS / APPOINTMENTS</label><input id="constraints" placeholder="e.g. 7–8 PM call, family event, deadline"></div>
+            <div class="full"><label for="firstAction">FIRST PHYSICAL ACTION</label><input id="firstAction" placeholder="e.g. Open the problem and write the brute-force approach"></div>
+          </div>
+          <div class="row" style="margin-top:13px;flex-wrap:wrap"><button class="primary" id="generateBtn">Generate / refresh plan</button><button id="savePlanBtn">Save plan</button><button id="resetChecksBtn">Reset checkboxes</button></div>
+          <div class="muted small" style="margin-top:8px">Plan generation uses your settings and templates in this file. It does not call an external AI service.</div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Today's task list</h2><button id="addTaskBtn">+ Add task</button></div>
+          <div class="section-list" id="taskList"></div>
+        </div>
+
+        <div class="card">
+          <div class="card-head"><h2>Today's schedule</h2><span class="muted small">Editable blocks</span></div>
+          <div class="timeline" id="timeline"></div>
+          <button id="addBlockBtn" style="margin-top:10px">+ Add schedule block</button>
+        </div>
+      </div>
+
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Daily rules</h2><button data-go="rules">Manage</button></div>
+          <div id="dailyRules"></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Session setup</h2><span class="pill">Before you start</span></div>
+          <div class="fields">
+            <div class="full"><label for="sessionTask">SESSION OUTCOME</label><input id="sessionTask" placeholder="What will be done?"></div>
+            <div><label for="sessionDuration">DURATION (MIN)</label><select id="sessionDuration"><option>10</option><option>25</option><option selected>45</option><option>60</option><option>90</option></select></div>
+            <div><label for="sessionStart">FIRST ACTION</label><input id="sessionStart" placeholder="First step"></div>
+            <div class="full"><label for="sessionDone">STOPPING CONDITION</label><input id="sessionDone" placeholder="How will I know I am done?"></div>
+          </div>
+          <div class="row" style="margin-top:10px;flex-wrap:wrap"><button class="primary" id="startSessionBtn">Start session</button><button id="endSessionBtn">End / log session</button></div>
+          <div class="note" id="sessionStatus" style="margin-top:10px">No active session. Define the outcome before starting.</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Thought parking lot</h2><span class="pill">Capture → Return</span></div>
+          <label for="thoughtInput">CAPTURE A THOUGHT / TODO / IDEA</label>
+          <textarea id="thoughtInput" placeholder="Write a short line, then return to your current task."></textarea>
+          <div class="row" style="margin-top:8px"><button class="primary" id="captureThoughtBtn">Capture thought</button><button data-go="inbox">Review inbox</button></div>
+          <div class="muted small" style="margin-top:8px">Review after the session, not during it—unless the matter is urgent or time-sensitive.</div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>When plans break</h2></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Urgent work arrives</div><div class="rule-note">Handle it, communicate, then replan. Don't automatically push everything to tomorrow.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Busy day</div><div class="rule-note">Use a smaller session only if useful and realistic.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Mentally exhausted</div><div class="rule-note">Take a genuine break or recover. Don't trade sleep for a streak.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Trip / unexpected event</div><div class="rule-note">Protect fixed commitments, move flexible work, and enjoy the event.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Missed a session</div><div class="rule-note">Record the next action and resume at the next suitable opportunity.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-plan">
+    <div class="layout">
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Build a daily plan dynamically</h2><span class="pill">Flexible templates</span></div>
+          <p class="muted">Select the kind of day you expect. The planner will create a suggested plan from your chosen priorities, constraints, and reusable rules. You can edit every task afterward.</p>
+          <div class="fields">
+            <div><label for="buildMode">DAY TYPE</label><select id="buildMode"><option value="normal">Normal day</option><option value="busy">Busy workday</option><option value="low">Low energy / recovery</option><option value="trip">Trip / personal commitment</option><option value="creative">YouTube production day</option></select></div>
+            <div><label for="buildFocus">MAIN FOCUS</label><select id="buildFocus"><option value="interview">Interview preparation</option><option value="ai">AI learning / automation</option><option value="youtube">YouTube creation</option><option value="work">Remote work</option><option value="personal">Personal errands</option><option value="rest">Recovery / free time</option></select></div>
+            <div><label for="buildMinutes">PERSONAL TIME AVAILABLE</label><select id="buildMinutes"><option value="30">30 minutes</option><option value="60" selected>1 hour</option><option value="120">2 hours</option><option value="180">3+ hours</option><option value="0">None</option></select></div>
+            <div><label for="buildEnergy">ENERGY LEVEL</label><select id="buildEnergy"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option><option value="exhausted">Exhausted</option></select></div>
+            <div class="full"><label for="buildConstraints">FIXED EVENTS / DEADLINES</label><textarea id="buildConstraints" placeholder="e.g. work call 7–8 PM, trip after 2 PM"></textarea></div>
+            <div class="full"><label for="buildOutcome">DESIRED OUTCOME</label><input id="buildOutcome" placeholder="e.g. Finish one system design mock interview"></div>
+          </div>
+          <div class="row" style="margin-top:12px;flex-wrap:wrap"><button class="primary" id="buildBtn">Generate plan for selected day</button><button id="applyRulesBtn">Apply active common rules</button></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Generated plan preview</h2><button id="applyPlanBtn" class="primary">Use this plan for today</button></div>
+          <div id="preview" class="section-list"><div class="empty">Generate a plan to preview it here.</div></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Planning principles</h2></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">One main outcome</div><div class="rule-note">Make the day successful with one meaningful result, not ten competing goals.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Protect fixed commitments</div><div class="rule-note">Keep your 7–8 PM call and any real deadlines. Don't assume work is done at a preset time.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Leave a buffer</div><div class="rule-note">Do not schedule every available minute. Unexpected work needs space.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Rest is valid</div><div class="rule-note">Low energy and travel days should automatically have fewer optional tasks.</div></div></div>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Quick presets</h2></div>
+          <div class="section-list">
+            <button class="preset" data-preset="normal">Normal weekday</button>
+            <button class="preset" data-preset="busy">Unexpectedly busy day</button>
+            <button class="preset" data-preset="low">Low-energy recovery day</button>
+            <button class="preset" data-preset="trip">Trip / event day</button>
+            <button class="preset" data-preset="creative">YouTube production day</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-rules">
+    <div class="layout">
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Common rules library</h2><button id="addRuleBtn" class="primary">+ Add rule</button></div>
+          <p class="muted">Create reusable rules once. Enable the ones you want the daily planner to include. You can add, edit, delete, or toggle rules at any time.</p>
+          <div id="rulesList"></div>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Rule editor</h2></div>
+          <form id="ruleForm">
+            <input type="hidden" id="ruleId">
+            <div style="margin-bottom:10px"><label for="ruleTitle">RULE TITLE</label><input id="ruleTitle" required placeholder="e.g. Capture thoughts during focus sessions"></div>
+            <div style="margin-bottom:10px"><label for="ruleDesc">INSTRUCTION / DESCRIPTION</label><textarea id="ruleDesc" placeholder="What should I do?"></textarea></div>
+            <div style="margin-bottom:10px"><label for="ruleCategory">CATEGORY</label><select id="ruleCategory"><option>Daily</option><option>Focus session</option><option>Workout</option><option>Work</option><option>YouTube</option><option>Sleep</option><option>Failure handling</option><option>Trip</option><option>Weekly review</option><option>AI automation</option><option>Personal</option></select></div>
+            <div style="margin-bottom:10px"><label for="ruleApplies">APPLIES TO</label><select id="ruleApplies"><option value="all">All day types</option><option value="normal">Normal day</option><option value="busy">Busy workday</option><option value="low">Low energy / recovery</option><option value="trip">Trip / personal commitment</option><option value="creative">YouTube production day</option></select></div>
+            <div class="row" style="margin-bottom:12px"><input id="ruleEnabled" type="checkbox" checked style="width:17px"><label for="ruleEnabled" style="margin:0">Enabled</label></div>
+            <div class="row"><button class="primary" type="submit">Save rule</button><button type="button" id="clearRuleBtn">Clear</button></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-inbox">
+    <div class="layout">
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Idea & task inbox</h2><span class="pill" id="inboxCount">0 items</span></div>
+          <div class="fields">
+            <div class="full"><label for="inboxText">NEW IDEA / TASK / REMINDER</label><textarea id="inboxText" placeholder="Capture it quickly. Clarify and prioritize later."></textarea></div>
+            <div><label for="inboxType">TYPE</label><select id="inboxType"><option>Task</option><option>Idea</option><option>Reminder</option><option>Follow-up</option><option>Trip / event</option><option>Automation opportunity</option></select></div>
+            <div><label for="inboxPriority">PRIORITY</label><select id="inboxPriority"><option>Later</option><option>Normal</option><option>High</option><option>Time-sensitive</option></select></div>
+          </div>
+          <button class="primary" id="addInboxBtn" style="margin-top:10px">Capture item</button>
+        </div>
+        <div class="card"><div class="card-head"><h2>Captured items</h2><button id="clearDoneInboxBtn">Archive completed</button></div><div id="inboxList" class="section-list"></div></div>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Inbox processing rules</h2></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Do</div><div class="rule-note">Small and appropriate tasks that truly need action now.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Schedule</div><div class="rule-note">Tasks with deadlines or requiring protected time.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Next action</div><div class="rule-note">Break a larger project into a physical, specific next step.</div></div></div>
+          <div class="rule"><div class="rule-text"><div class="rule-title">Later or delete</div><div class="rule-note">Keep ideas from competing with current commitments.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="view" id="view-review">
+    <div class="layout">
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Daily shutdown</h2><span class="pill">5 minutes</span></div>
+          <div class="fields">
+            <div class="full"><label for="reviewCompleted">WHAT DID I COMPLETE?</label><textarea id="reviewCompleted" placeholder="Results, not just time spent"></textarea></div>
+            <div class="full"><label for="reviewObstacle">WHAT DISRUPTED ME?</label><textarea id="reviewObstacle" placeholder="Urgent work, unclear task, fatigue, distraction..."></textarea></div>
+            <div class="full"><label for="reviewNext">WHAT IS THE NEXT ACTION?</label><textarea id="reviewNext" placeholder="Make restarting easy"></textarea></div>
+            <div class="full"><label for="reviewAdjustment">ONE ADJUSTMENT FOR TOMORROW</label><input id="reviewAdjustment" placeholder="Keep it small and specific"></div>
+          </div>
+          <button class="primary" id="saveDailyReview" style="margin-top:10px">Save daily review</button>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Weekly review</h2><span class="pill">20–30 minutes</span></div>
+          <div class="fields">
+            <div class="full"><label for="weekWins">WINS FROM LAST WEEK</label><textarea id="weekWins" placeholder="What moved forward?"></textarea></div>
+            <div class="full"><label for="weekMissed">UNFINISHED / MISSED ITEMS</label><textarea id="weekMissed" placeholder="Decide: reschedule, reduce, delegate, or drop"></textarea></div>
+            <div class="full"><label for="weekLesson">BIGGEST LESSON</label><textarea id="weekLesson" placeholder="What pattern did I notice?"></textarea></div>
+            <div class="full"><label for="weekOutcomes">THREE OUTCOMES FOR NEXT WEEK</label><textarea id="weekOutcomes" placeholder="1. Career / interviews&#10;2. YouTube / AI&#10;3. Health / personal"></textarea></div>
+            <div class="full"><label for="weekEvents">TRIPS / DEADLINES / FIXED EVENTS</label><textarea id="weekEvents" placeholder="Reserve time and adjust expectations"></textarea></div>
+          </div>
+          <button class="primary" id="saveWeeklyReview" style="margin-top:10px">Save weekly review</button>
+        </div>
+      </div>
+      <div class="stack">
+        <div class="card">
+          <div class="card-head"><h2>Review reminder</h2></div>
+          <p class="muted">At the end of the week, review the previous week before planning the next. Leave buffer time, preserve one lighter day when possible, and don't move every unfinished task into Monday.</p>
+          <button id="exportReviewBtn">Export review notes</button>
+        </div>
+        <div class="card">
+          <div class="card-head"><h2>Data & privacy</h2></div>
+          <p class="muted small">This standalone page stores your entries in this browser using local storage. Data does not automatically sync across devices or browsers. Export a backup regularly. Clearing browser data may erase saved entries.</p>
+          <button class="danger" id="clearAllBtn">Clear all local data</button>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="footer">Personal OS · Local-first planner · Export backups regularly</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+(function(){
+"use strict";
+const KEY="personalOSPlanner_v1";
+const $=id=>document.getElementById(id);
+const uid=()=>Math.random().toString(36).slice(2,10);
+const today=()=>{const d=new Date();return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`};
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const defaults=[
+["Morning daylight","Get outdoor light soon after waking; avoid looking directly at the sun.","Daily","normal",true],
+["Breakfast and hydration","Eat adequately, hydrate, and include protein and fruit when practical.","Daily","all",true],
+["Define the outcome","Before each session, define the outcome, first action, duration, and stopping condition.","Focus session","all",true],
+["Capture stray thoughts","Write unrelated thoughts briefly, then return to the current task. Review later unless urgent.","Focus session","all",true],
+["Active recall","Use practice, recall, and problem-solving rather than passive reading alone.","Daily","normal",true],
+["Protect the 7–8 PM call","Keep the fixed work call and account for real work commitments.","Work","all",true],
+["Workout start ritual","Prepare clothes and begin with a warm-up; adjust for health and recovery.","Workout","normal",true],
+["Thought parking lot","Capture new ideas in the inbox instead of switching tasks immediately.","Daily","all",true],
+["Close every session","Save progress, record unfinished work, and write the next action.","Focus session","all",true],
+["Evening shutdown","Record open loops, prepare tomorrow, reduce stimulation, and protect sleep.","Sleep","all",true],
+["Avoid late caffeine","Keep caffeine early enough to avoid disrupting sleep.","Sleep","all",true],
+["Don't compensate by overloading","When plans fail, replan; don't automatically double tomorrow's workload.","Failure handling","all",true],
+["Trips change the plan","Protect fixed commitments, move flexible tasks, and leave room to enjoy the trip.","Trip","trip",true],
+["Weekly review","Review wins, unfinished work, inbox, upcoming events, and next week's outcomes.","Weekly review","all",true],
+["Measure automation value","Test reliability and maintenance cost, not only time saved.","AI automation","all",true]
+];
+let state=load();
+let previewPlan=[];
+let activeSession=null;
+function load(){
+ try{
+  const raw=localStorage.getItem(KEY); if(raw){const x=JSON.parse(raw);if(x&&typeof x==="object")return x}
+ }catch(e){}
+ return {days:{},rules:defaults.map((r,i)=>({id:"r"+i,title:r[0],desc:r[1],category:r[2],applies:r[3],enabled:r[4]})),inbox:[],sessions:{},dailyReviews:{},weeklyReviews:{}};
+}
+function persist(){try{localStorage.setItem(KEY,JSON.stringify(state));}catch(e){toast("Could not save locally. Export a backup.");}}
+function toast(msg){const el=$("toast");el.textContent=msg;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2200)}
+function ensureDay(date){if(!state.days[date])state.days[date]={mode:"normal",mainOutcome:"",energy:"normal",available:"60",constraints:"",firstAction:"",tasks:[],blocks:[],ruleChecks:{}};return state.days[date]}
+let currentDate=today();
+function getDay(){return ensureDay(currentDate)}
+function setTab(name){document.querySelectorAll(".tab").forEach(b=>b.classList.toggle("active",b.dataset.tab===name));document.querySelectorAll(".view").forEach(v=>v.classList.toggle("active",v.id==="view-"+name));if(name==="rules")renderRules();if(name==="inbox")renderInbox();if(name==="review")loadReviews();}
+function loadDayIntoForm(){
+ const d=getDay();$("planDate").value=currentDate;$("dayMode").value=d.mode||"normal";$("mainOutcome").value=d.mainOutcome||"";$("energy").value=d.energy||"normal";$("available").value=d.available||"60";$("constraints").value=d.constraints||"";$("firstAction").value=d.firstAction||"";
+ $("todayHeading").textContent=new Date(currentDate+"T12:00:00").toLocaleDateString(undefined,{weekday:"long",month:"short",day:"numeric"})+" plan";
+ $("dayModePill").textContent=({"normal":"NORMAL DAY","busy":"BUSY DAY","low":"RECOVERY DAY","trip":"TRIP / EVENT","creative":"CREATIVE DAY"})[d.mode||"normal"];
+ renderToday();
+}
+function syncForm(){const d=getDay();d.mode=$("dayMode").value;d.mainOutcome=$("mainOutcome").value;d.energy=$("energy").value;d.available=$("available").value;d.constraints=$("constraints").value;d.firstAction=$("firstAction").value;persist();$("dayModePill").textContent=({"normal":"NORMAL DAY","busy":"BUSY DAY","low":"RECOVERY DAY","trip":"TRIP / EVENT","creative":"CREATIVE DAY"})[d.mode];}
+function addTask(title,category="Personal",duration=30,desc="",date=currentDate){const d=ensureDay(date);d.tasks.push({id:uid(),title,category,duration,desc,done:false});persist();if(date===currentDate)renderToday();}
+function generatePlan(mode,focus,minutes,energy,constraints,outcome){
+ let tasks=[],blocks=[];
+ const add=(title,category,duration,desc="")=>tasks.push({id:uid(),title,category,duration,desc,done:false});
+ const block=(time,title,desc)=>blocks.push({id:uid(),time,title,desc});
+ if(mode==="trip"){
+  add("Check travel details and fixed commitments","Personal",15,"Keep travel time realistic.");
+  add("Enjoy the trip; capture vlog footage only if convenient","YouTube",0,"No obligation to turn every outing into content.");
+  add("Protect rest and resume later","Recovery",0,"Move flexible tasks to the next suitable day.");
+  block("As needed","Trip / personal event","Don't schedule normal work over unavailable time.");
+  if(constraints)block("Fixed","Appointments / travel",constraints);
+  return {tasks,blocks};
+ }
+ if(mode==="low"||energy==="exhausted"){
+  add("Handle only essential work commitments","Work",0,"Follow actual work obligations; avoid optional overload.");
+  add("Take a genuine recovery break","Recovery",20,"Quiet rest, gentle walk, meal, or time away from screens.");
+  add("Capture tomorrow's first action","Planning",5,"No catch-up marathon.");
+  block("Flexible","Recovery first","Skip optional sessions if genuinely depleted.");
+  if(constraints)block("Fixed","Fixed commitments",constraints);
+  return {tasks,blocks};
+ }
+ if(mode==="busy"){
+  add("Identify and complete the single most important outcome","Priority",Math.min(45,Number(minutes)||30),"Reduce the scope, not the quality.");
+  add("Capture interruptions and replan once urgent work settles","Planning",5,"Do not push every missed task into tomorrow.");
+  if(Number(minutes)>=25&&energy!=="low")add("Optional minimum learning or movement session","Personal",10,"Only if useful and realistic.");
+  block("Work hours","Priority work / urgent incidents","Allow buffer; actual work responsibilities take precedence.");
+  if(constraints)block("Fixed","Fixed commitment",constraints);
+  return {tasks,blocks};
+ }
+ if(mode==="creative"||focus==="youtube"){
+  add(outcome||"Complete one YouTube production milestone","YouTube",Math.min(120,Number(minutes)||60),"Choose only one stage: research, script, shoot, edit, or publish.");
+  add("Save project and record the next edit / production action","YouTube",5,"Make resuming easy.");
+  if(Number(minutes)>=60)add("Review title, thumbnail, or footage organization","YouTube",20,"Optional if time remains.");
+  block("First focus block","YouTube production", "Work on one stage without switching.");
+  block("Close","Save and define next action","Don't require the whole video to be finished today.");
+  return {tasks,blocks};
+ }
+ if(focus==="interview"){
+  add(outcome||"Complete one focused interview-preparation outcome","Interview",Math.min(90,Number(minutes)||60),"Use active recall, solve, explain, and review mistakes.");
+  add("Record one weakness and the next practice step","Interview",5,"Avoid passive study only.");
+ }else if(focus==="ai"){
+  add(outcome||"Test one AI workflow or automation opportunity","AI automation",Math.min(60,Number(minutes)||45),"Define a test and verify the result.");
+  add("Record reliability, maintenance cost, and time saved","AI automation",5,"Keep only useful automation.");
+ }else if(focus==="work"){
+  add(outcome||"Complete the highest-priority work milestone","Work",Math.min(90,Number(minutes)||60),"Respect actual deadlines and availability expectations.");
+ }else if(focus==="personal"){
+  add(outcome||"Complete one important personal errand","Personal",Math.min(60,Number(minutes)||30),"Make the next action specific.");
+ }else if(focus==="rest"){
+  add("Protect a genuine rest period","Recovery",Math.min(60,Number(minutes)||30),"Rest is a valid plan.");
+ }
+ if(mode==="normal"){
+  add("Review priorities and capture new tasks","Planning",5,"Keep new ideas out of the active session.");
+  if(energy!=="low"&&Number(minutes)>=60)add("Workout or planned movement","Health",30,"Adjust for your training plan and recovery.");
+  add("Evening shutdown: record unfinished tasks and tomorrow's first action","Sleep",5,"Protect your bedtime.");
+  block("8–10 AM","Interview / AI learning","One main learning objective; reduce duration if depleted.");
+  block("10 AM onward","Remote work","Use focus blocks and handle real commitments.");
+  block("7–8 PM","Fixed work call","Protected commitment.");
+  block("Evening","Workout / personal project / free time","Choose based on energy and available time; don't fill every hour.");
+  block("9 PM","Shutdown and wind-down","Record open loops, dim lights, prepare for sleep.");
+ }else{
+  block("First available block","Main priority","Protect one meaningful outcome.");
+  block("Later","Flexible personal work","Only if time and energy remain.");
+ }
+ if(constraints)block("Fixed","Constraints / appointments",constraints);
+ return {tasks,blocks};
+}
+function generateFromToday(){
+ syncForm();
+ const d=getDay();const res=generatePlan(d.mode,"interview",d.available,d.energy,d.constraints,d.mainOutcome);
+ // Merge active reusable rules as checklist items only when not already represented.
+ const existing=new Set(d.tasks.map(t=>t.title));
+ res.tasks.forEach(t=>{if(!existing.has(t.title))d.tasks.push(t)});
+ if(!d.blocks.length)d.blocks=res.blocks;
+ else if(confirm("Replace today's schedule blocks with the generated template?"))d.blocks=res.blocks;
+ persist();renderToday();toast("Plan refreshed. Review and edit it to fit reality.");
+}
+function renderToday(){
+ const d=getDay();$("dayModePill").textContent=({"normal":"NORMAL DAY","busy":"BUSY DAY","low":"RECOVERY DAY","trip":"TRIP / EVENT","creative":"CREATIVE DAY"})[d.mode||"normal"];
+ const tl=$("taskList");
+ if(!d.tasks.length)tl.innerHTML='<div class="empty">No tasks yet. Generate a plan or add a task.</div>';
+ else tl.innerHTML=d.tasks.map(t=>`<div class="task ${t.done?"done":""}"><input type="checkbox" data-task-check="${t.id}" ${t.done?"checked":""}><div><div class="task-title">${esc(t.title)}</div><div class="task-meta">${esc(t.category||"Task")} · ${Number(t.duration)||0} min ${t.desc?"· "+esc(t.desc):""}</div></div><div class="task-actions"><button class="icon-btn" data-task-edit="${t.id}">Edit</button><button class="icon-btn danger" data-task-del="${t.id}">×</button></div></div>`).join("");
+ const timeline=$("timeline");
+ if(!d.blocks.length)timeline.innerHTML='<div class="empty">No schedule blocks yet. Generate a plan or add one.</div>';
+ else timeline.innerHTML=d.blocks.map(b=>`<div class="block"><div class="block-time">${esc(b.time)}</div><div><div class="block-title">${esc(b.title)}</div><div class="block-desc">${esc(b.desc||"")}</div><div class="row" style="margin-top:6px"><button class="icon-btn" data-block-edit="${b.id}">Edit</button><button class="icon-btn danger" data-block-del="${b.id}">Remove</button></div></div></div>`).join("");
+ renderDailyRules();updateStats();
+}
+function renderDailyRules(){
+ const d=getDay();const rules=state.rules.filter(r=>r.enabled&&(r.applies==="all"||r.applies===d.mode));
+ $("dailyRules").innerHTML=rules.length?rules.map(r=>`<div class="rule"><input type="checkbox" data-rule-check="${r.id}" ${d.ruleChecks[r.id]?"checked":""}><div class="rule-text"><div class="rule-title">${esc(r.title)}</div><div class="rule-note">${esc(r.desc)}</div></div></div>`).join(""):'<div class="empty">No active rules for this day type.</div>';
+}
+function updateStats(){
+ const d=getDay(),done=d.tasks.filter(t=>t.done).length,total=d.tasks.length;
+ $("statTasks").textContent=`${done}/${total}`;$("taskProgress").style.width=(total?done/total*100:0)+"%";
+ const rules=state.rules.filter(r=>r.enabled&&(r.applies==="all"||r.applies===d.mode));const rd=rules.filter(r=>d.ruleChecks[r.id]).length;
+ $("statRules").textContent=`${rd}/${rules.length}`;$("ruleProgress").style.width=(rules.length?rd/rules.length*100:0)+"%";
+ $("statSessions").textContent=(state.sessions[currentDate]||[]).length;
+}
+function renderRules(){
+ const el=$("rulesList");
+ el.innerHTML=state.rules.map(r=>`<div class="rule"><input type="checkbox" data-rule-enable="${r.id}" ${r.enabled?"checked":""}><div class="rule-text"><div class="rule-title">${esc(r.title)} <span class="pill">${esc(r.category)}</span></div><div class="rule-note">${esc(r.desc)} · Applies: ${esc(r.applies)}</div></div><div class="rule-actions"><button class="icon-btn" data-rule-edit="${r.id}">Edit</button><button class="icon-btn danger" data-rule-del="${r.id}">×</button></div></div>`).join("");
+}
+function clearRuleForm(){$("ruleId").value="";$("ruleTitle").value="";$("ruleDesc").value="";$("ruleCategory").value="Daily";$("ruleApplies").value="all";$("ruleEnabled").checked=true;}
+function editRule(id){const r=state.rules.find(x=>x.id===id);if(!r)return;$("ruleId").value=r.id;$("ruleTitle").value=r.title;$("ruleDesc").value=r.desc;$("ruleCategory").value=r.category;$("ruleApplies").value=r.applies;$("ruleEnabled").checked=r.enabled;window.scrollTo({top:0,behavior:"smooth"});}
+function addInbox(text,type="Task",priority="Normal"){state.inbox.unshift({id:uid(),text,type,priority,done:false,created:new Date().toISOString()});persist();renderInbox();}
+function renderInbox(){
+ $("inboxCount").textContent=state.inbox.filter(i=>!i.done).length+" active";
+ const el=$("inboxList");const arr=state.inbox;
+ el.innerHTML=arr.length?arr.map(i=>`<div class="task ${i.done?"done":""}"><input type="checkbox" data-inbox-check="${i.id}" ${i.done?"checked":""}><div><div class="task-title">${esc(i.text)}</div><div class="task-meta">${esc(i.type)} · ${esc(i.priority)} · ${new Date(i.created).toLocaleDateString()}</div></div><div class="task-actions"><button class="icon-btn" data-inbox-task="${i.id}">Add to today</button><button class="icon-btn danger" data-inbox-del="${i.id}">×</button></div></div>`).join(""):'<div class="empty">Inbox is empty. Capture ideas here, then review them later.</div>';
+}
+function loadReviews(){
+ const dr=state.dailyReviews[currentDate]||{};["reviewCompleted","reviewObstacle","reviewNext","reviewAdjustment"].forEach(k=>$(k).value=dr[k]||"");
+ const wk=state.weeklyReviews[currentDate]||{};["weekWins","weekMissed","weekLesson","weekOutcomes","weekEvents"].forEach(k=>$(k).value=wk[k]||"");
+}
+function renderPreview(){
+ const p=$("preview");if(!previewPlan.length){p.innerHTML='<div class="empty">Generate a plan to preview it here.</div>';return;}
+ p.innerHTML=previewPlan.map(t=>`<div class="task"><div></div><div><div class="task-title">${esc(t.title)}</div><div class="task-meta">${esc(t.category)} · ${t.duration} min · ${esc(t.desc||"")}</div></div></div>`).join("");
+}
+function download(filename,text,type="application/json"){const blob=new Blob([text],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000);}
+function exportAll(){download("personal-os-backup-"+today()+".json",JSON.stringify(state,null,2));toast("Backup exported.");}
+function addBlock(){const time=prompt("Time or time range (e.g. 2–3 PM):","Flexible");if(time===null)return;const title=prompt("Block title:","Focus session");if(title===null)return;const desc=prompt("Description / outcome:","");getDay().blocks.push({id:uid(),time,title,desc});persist();renderToday();}
+function addTaskPrompt(){const title=prompt("Task title:");if(!title)return;const category=prompt("Category (Interview, Work, YouTube, Health, Personal):","Personal")||"Personal";const duration=Number(prompt("Estimated minutes:","30"))||30;const desc=prompt("Completion condition / notes:","")||"";addTask(title,category,duration,desc);}
+function editTask(id){const t=getDay().tasks.find(x=>x.id===id);if(!t)return;const title=prompt("Task title:",t.title);if(title===null)return;const desc=prompt("Completion condition / notes:",t.desc||"");if(desc===null)return;t.title=title;t.desc=desc;persist();renderToday();}
+function buildPreview(){
+ const mode=$("buildMode").value,focus=$("buildFocus").value,mins=$("buildMinutes").value,energy=$("buildEnergy").value,cons=$("buildConstraints").value,out=$("buildOutcome").value;
+ const res=generatePlan(mode,focus,mins,energy,cons,out);previewPlan=res.tasks;renderPreview();
+}
+function applyPreview(){
+ if(!previewPlan.length){toast("Generate a plan first.");return}
+ const d=getDay();d.mode=$("buildMode").value;d.energy=$("buildEnergy").value;d.available=$("buildMinutes").value;d.constraints=$("buildConstraints").value;d.mainOutcome=$("buildOutcome").value;d.tasks=previewPlan.map(t=>({...t}));d.blocks=generatePlan(d.mode,$("buildFocus").value,d.available,d.energy,d.constraints,d.mainOutcome).blocks;
+ currentDate=today();loadDayIntoForm();persist();setTab("today");toast("Plan applied to today. Edit it as needed.");
+}
+function applyRulesToPlan(){const d=getDay();const applicable=state.rules.filter(r=>r.enabled&&(r.applies==="all"||r.applies===d.mode));const have=new Set(d.tasks.map(t=>t.title));applicable.forEach(r=>{if(!have.has(r.title))d.tasks.push({id:uid(),title:r.title,category:r.category,duration:0,desc:r.desc,done:!!d.ruleChecks[r.id]})});persist();renderToday();toast("Applicable rules added to today's tasks.");}
+function saveCurrentPlan(){syncForm();persist();toast("Plan saved.");}
+function clearAll(){if(!confirm("Clear all saved plans, rules, inbox items, and reviews from this browser? Export a backup first if needed."))return;localStorage.removeItem(KEY);state={days:{},rules:defaults.map((r,i)=>({id:"r"+i,title:r[0],desc:r[1],category:r[2],applies:r[3],enabled:r[4]})),inbox:[],sessions:{},dailyReviews:{},weeklyReviews:{}};loadDayIntoForm();renderRules();renderInbox();toast("Local data cleared.");}
+$("planDate").addEventListener("change",()=>{syncForm();currentDate=$("planDate").value||today();loadDayIntoForm();loadReviews();});
+["dayMode","mainOutcome","energy","available","constraints","firstAction"].forEach(id=>$(id).addEventListener("change",syncForm));
+$("todayBtn").onclick=()=>{syncForm();currentDate=today();loadDayIntoForm();loadReviews();setTab("today")};
+$("generateBtn").onclick=generateFromToday;
+$("savePlanBtn").onclick=saveCurrentPlan;
+$("resetChecksBtn").onclick=()=>{const d=getDay();d.tasks.forEach(t=>t.done=false);d.ruleChecks={};persist();renderToday();toast("Today's checkboxes reset.")};
+$("addTaskBtn").onclick=addTaskPrompt;$("addBlockBtn").onclick=addBlock;
+$("taskList").addEventListener("change",e=>{const id=e.target.dataset.taskCheck;if(!id)return;const t=getDay().tasks.find(x=>x.id===id);if(t){t.done=e.target.checked;persist();renderToday()}});
+$("taskList").addEventListener("click",e=>{const edit=e.target.dataset.taskEdit,del=e.target.dataset.taskDel;if(edit)editTask(edit);if(del&&confirm("Delete this task?")){getDay().tasks=getDay().tasks.filter(t=>t.id!==del);persist();renderToday()}});
+$("timeline").addEventListener("click",e=>{const edit=e.target.dataset.blockEdit,del=e.target.dataset.blockDel;if(edit){const b=getDay().blocks.find(x=>x.id===edit);if(!b)return;const time=prompt("Time:",b.time);if(time===null)return;const title=prompt("Title:",b.title);if(title===null)return;const desc=prompt("Description:",b.desc||"");if(desc===null)return;Object.assign(b,{time,title,desc});persist();renderToday()}if(del){getDay().blocks=getDay().blocks.filter(b=>b.id!==del);persist();renderToday()}});
+$("dailyRules").addEventListener("change",e=>{const id=e.target.dataset.ruleCheck;if(!id)return;getDay().ruleChecks[id]=e.target.checked;persist();updateStats()});
+$("captureThoughtBtn").onclick=()=>{const val=$("thoughtInput").value.trim();if(!val)return;addInbox(val,"Idea","Later");$("thoughtInput").value="";toast("Captured. Return to your session.")};
+$("addInboxBtn").onclick=()=>{const val=$("inboxText").value.trim();if(!val)return;addInbox(val,$("inboxType").value,$("inboxPriority").value);$("inboxText").value="";toast("Added to inbox.")};
+$("inboxList").addEventListener("change",e=>{const id=e.target.dataset.inboxCheck;if(!id)return;const i=state.inbox.find(x=>x.id===id);if(i){i.done=e.target.checked;persist();renderInbox()}});
+$("inboxList").addEventListener("click",e=>{const add=e.target.dataset.inboxTask,del=e.target.dataset.inboxDel;if(add){const i=state.inbox.find(x=>x.id===add);if(i){addTask(i.text,i.type,30,"Captured from inbox");i.done=true;persist();renderInbox();toast("Added to today's plan.")}}if(del&&confirm("Delete this inbox item?")){state.inbox=state.inbox.filter(i=>i.id!==del);persist();renderInbox()}});
+$("addRuleBtn").onclick=()=>{clearRuleForm();$("ruleTitle").focus()};
+$("clearRuleBtn").onclick=clearRuleForm;
+$("ruleForm").onsubmit=e=>{e.preventDefault();const id=$("ruleId").value;const r={id:id||uid(),title:$("ruleTitle").value.trim(),desc:$("ruleDesc").value.trim(),category:$("ruleCategory").value,applies:$("ruleApplies").value,enabled:$("ruleEnabled").checked};if(!r.title)return;if(id){const i=state.rules.findIndex(x=>x.id===id);if(i>=0)state.rules[i]=r}else state.rules.push(r);persist();clearRuleForm();renderRules();renderDailyRules();toast("Rule saved.")};
+$("rulesList").addEventListener("change",e=>{const id=e.target.dataset.ruleEnable;if(!id)return;const r=state.rules.find(x=>x.id===id);if(r){r.enabled=e.target.checked;persist();renderRules();renderDailyRules();updateStats()}});
+$("rulesList").addEventListener("click",e=>{const edit=e.target.dataset.ruleEdit,del=e.target.dataset.ruleDel;if(edit)editRule(edit);if(del&&confirm("Delete this rule?")){state.rules=state.rules.filter(r=>r.id!==del);persist();renderRules();renderDailyRules();updateStats()}});
+$("buildBtn").onclick=buildPreview;$("applyPlanBtn").onclick=applyPreview;$("applyRulesBtn").onclick=applyRulesToPlan;
+document.querySelectorAll("[data-tab]").forEach(b=>b.onclick=()=>setTab(b.dataset.tab));
+document.querySelectorAll("[data-go]").forEach(b=>b.onclick=()=>setTab(b.dataset.go));
+document.querySelectorAll(".preset").forEach(b=>b.onclick=()=>{const mode=b.dataset.preset;$("buildMode").value=mode;const focus=mode==="creative"?"youtube":mode==="trip"?"personal":mode==="low"?"rest":"interview";$("buildFocus").value=focus;$("buildMinutes").value=mode==="busy"?"30":mode==="low"?"30":"60";$("buildEnergy").value=mode==="low"?"low":"normal";$("buildOutcome").value="";buildPreview();});
+$("startSessionBtn").onclick=()=>{const task=$("sessionTask").value.trim();if(!task){toast("Enter a session outcome first.");return}activeSession={id:uid(),task,start:new Date().toISOString(),duration:Number($("sessionDuration").value),first:$("sessionStart").value,done:$("sessionDone").value};$("sessionStatus").textContent="Session started: "+task+" · "+activeSession.duration+" min target. Capture stray thoughts and return to the task.";toast("Session started. Keep the outcome visible.")};
+$("endSessionBtn").onclick=()=>{if(!activeSession){toast("No active session to log.");return}const end=new Date().toISOString();const mins=Math.max(1,Math.round((new Date(end)-new Date(activeSession.start))/60000));if(!state.sessions[currentDate])state.sessions[currentDate]=[];const result=prompt("What did you complete?","");const next=prompt("Next action for when you resume:","");state.sessions[currentDate].push({...activeSession,end,actualMinutes:mins,result:result||"",next:next||""});activeSession=null;persist();$("sessionStatus").textContent="Session logged. Result and next action recorded.";updateStats();toast("Session logged.")};
+$("saveDailyReview").onclick=()=>{state.dailyReviews[currentDate]={reviewCompleted:$("reviewCompleted").value,reviewObstacle:$("reviewObstacle").value,reviewNext:$("reviewNext").value,reviewAdjustment:$("reviewAdjustment").value};persist();toast("Daily review saved.")};
+$("saveWeeklyReview").onclick=()=>{state.weeklyReviews[currentDate]={weekWins:$("weekWins").value,weekMissed:$("weekMissed").value,weekLesson:$("weekLesson").value,weekOutcomes:$("weekOutcomes").value,weekEvents:$("weekEvents").value};persist();toast("Weekly review saved.")};
+$("exportBtn").onclick=exportAll;$("printBtn").onclick=()=>window.print();$("exportReviewBtn").onclick=()=>{const data={dailyReviews:state.dailyReviews,weeklyReviews:state.weeklyReviews};download("personal-os-reviews-"+today()+".json",JSON.stringify(data,null,2));toast("Review notes exported.")};$("clearDoneInboxBtn").onclick=()=>{state.inbox=state.inbox.filter(i=>!i.done);persist();renderInbox();toast("Completed items archived.")};$("clearAllBtn").onclick=clearAll;
+$("buildMode").addEventListener("change",()=>{});$("buildFocus").addEventListener("change",()=>{});
+loadDayIntoForm();renderRules();renderInbox();loadReviews();updateStats();
+})();
+</script>
+</body>
+</html>
