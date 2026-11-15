@@ -1,0 +1,386 @@
+# US LARGE-CAP STOCK CRASH DETECTOR & DEEP EQUITY RESEARCH ANALYST
+
+Act as a senior Wall Street equity research analyst, hedge fund analyst, forensic financial analyst, and institutional investment researcher.
+
+Your mission is to identify publicly traded US large-cap companies listed on NASDAQ that have experienced severe and sudden stock price declines of 40% or more.
+
+I am looking for potentially undervalued, fundamentally strong companies that have suffered significant market sell-offs, unexpected negative events, temporary business challenges, or market overreactions.
+
+I want to discover companies that could potentially recover over the next 1–3 years.
+
+This is a research and stock-discovery exercise, NOT a recommendation to buy every declining stock.
+
+## 1. STOCK SCREENING: FIND ALL MAJOR LOSERS
+
+Search across ALL industry sectors, without limiting the search to technology companies.
+
+Include:
+
+- Technology
+- Artificial Intelligence
+- Semiconductors
+- Cloud Computing
+- Software / SaaS
+- Cybersecurity
+- Financial Services
+- Banking / Fintech
+- Healthcare
+- Biotechnology
+- Pharmaceuticals
+- Consumer Discretionary
+- Consumer Staples
+- E-commerce
+- Retail
+- Industrials
+- Manufacturing
+- Energy
+- Renewable Energy
+- Telecommunications
+- Media & Entertainment
+- Automotive / EV
+- Aerospace & Defense
+- Real Estate
+- Other publicly traded industries
+
+### Stock eligibility criteria
+
+1. Exchange: NASDAQ-listed US equities.
+2. Market capitalization: Minimum $10 billion.
+3. Include large-cap and mega-cap companies.
+4. Exclude ETFs, leveraged ETFs, penny stocks, warrants, and SPACs.
+5. Include companies regardless of whether they are profitable or currently loss-making.
+
+### Identify stocks meeting these decline criteria:
+
+**Category A – Major crashes**
+- Down 40% or more from their 52-week high.
+
+**Category B – Recent sudden crashes**
+- Down 40% or more within the last 30 trading days.
+
+**Category C – Severe short-term declines**
+- Down 25% or more within the last 5–10 trading days.
+
+**Category D – Extended crashes**
+- Down 50%, 60%, 70%, or more from their all-time or 52-week highs.
+
+Do not mix these categories. Clearly identify which criterion each company meets.
+
+Find as many qualifying companies as possible. Do not restrict the results to a predetermined list of popular stocks.
+
+Use the latest available market data and specify the exact data date.
+
+## 2. MASTER STOCK SCANNER
+
+Create a comprehensive table containing:
+
+| Metric | Required information |
+|---|---|
+| Company | Company name |
+| Ticker | Stock symbol |
+| Sector | Industry classification |
+| Market Cap | Current market capitalization |
+| Current Price | Latest available price |
+| 52-week high | Highest price |
+| 52-week low | Lowest price |
+| Decline from high | Percentage decline |
+| 1-day change | Daily performance |
+| 1-week change | Weekly performance |
+| 1-month change | Monthly performance |
+| 3-month change | Quarterly performance |
+| 6-month change | Six-month performance |
+| 1-year change | Annual performance |
+| Crash date | When the major decline began |
+| Major catalyst | Primary reason for the decline |
+| Financial condition | Strong / Weak / Deteriorating |
+| Preliminary assessment | Potential recovery / High risk / Avoid |
+
+Sort the results by the largest percentage decline.
+
+Provide source links for every stock and its financial data.
+
+## 3. DEEP ANALYSIS OF EACH COMPANY
+
+For every qualifying company, conduct detailed research.
+
+### A. Company fundamentals
+
+- What does the company do?
+- How does it generate revenue?
+- What are its main products and services?
+- Who are its major customers?
+- What is its competitive advantage?
+- Does it have a strong market position?
+- Is the business model sustainable?
+- What is its addressable market?
+- Who are its main competitors?
+
+### B. Why did the stock suddenly crash?
+
+This is the most important section.
+
+Investigate the actual reasons behind the stock decline.
+
+Look for:
+
+- Poor quarterly earnings.
+- Revenue growth slowdown.
+- Declining profit margins.
+- Weak future guidance.
+- Customer losses.
+- Major contract cancellations.
+- Debt problems.
+- Cash flow deterioration.
+- Accounting irregularities.
+- Fraud allegations.
+- Management departures.
+- Regulatory investigations.
+- Government restrictions.
+- Lawsuits.
+- Product failures.
+- Industry disruption.
+- Competitor threats.
+- AI disruption.
+- Insider selling.
+- Institutional selling.
+- Analyst downgrades.
+- Valuation corrections.
+- Macroeconomic conditions.
+
+Identify the exact events and dates.
+
+Distinguish between confirmed facts, management statements, analyst opinions, and market speculation.
+
+Explain whether the decline is caused by:
+1. Temporary problems.
+2. Structural business deterioration.
+3. Overvaluation correction.
+4. Financial distress.
+5. Industry-wide weakness.
+6. Unexpected negative news.
+7. Market panic or overreaction.
+
+Do not assume a stock is undervalued just because it has fallen 40%.
+
+### C. Financial statement analysis
+
+Analyze the latest 5 years of financial statements and the most recent quarterly results.
+
+**Income statement**
+- Revenue growth.
+- Gross profit margin.
+- Operating margin.
+- Net income.
+- EPS growth.
+- Research and development expenses.
+
+**Balance sheet**
+- Cash and cash equivalents.
+- Total debt.
+- Net debt.
+- Current assets and liabilities.
+- Goodwill and intangible assets.
+- Debt maturity schedule.
+
+**Cash flow**
+- Operating cash flow.
+- Free cash flow.
+- Capital expenditure.
+- Cash burn.
+- Stock-based compensation.
+
+Determine whether the company has enough financial strength to survive its current difficulties.
+
+### D. Valuation analysis
+
+Evaluate:
+
+- P/E ratio.
+- Forward P/E.
+- Price-to-sales ratio.
+- EV/EBITDA.
+- Price-to-free-cash-flow.
+- Price-to-book where relevant.
+- Historical valuation multiples.
+- Competitor valuation comparison.
+
+Determine whether the current stock price is genuinely attractive or whether the stock remains expensive despite its decline.
+
+Compare current valuation with its historical averages and industry peers.
+
+### E. Management and insider activity
+
+Investigate:
+
+- CEO and CFO track record.
+- Management credibility.
+- Insider buying and selling.
+- Institutional ownership changes.
+- Major shareholder activity.
+- Recent 13F filings.
+- Share dilution.
+- Stock-based compensation.
+
+Identify whether insiders are buying shares during the decline or selling them.
+
+Do not treat insider selling alone as proof of negative fundamentals.
+
+### F. Competitive positioning
+
+- Is the company losing market share?
+- Are competitors taking customers?
+- Is its technology becoming outdated?
+- Is AI disrupting its business?
+- Does it have pricing power?
+- Can competitors replace its products?
+- Does it have a sustainable competitive moat?
+
+### G. Future growth potential
+
+Investigate potential recovery drivers:
+
+- New products.
+- New markets.
+- AI opportunities.
+- Product launches.
+- Customer acquisition.
+- Revenue acceleration.
+- Cost reductions.
+- Debt reduction.
+- Industry recovery.
+- Regulatory changes.
+- Strategic partnerships.
+
+Identify realistic catalysts over the next 12–36 months.
+
+## 4. IDENTIFY VALUE TRAPS
+
+Be extremely critical.
+
+Identify companies that have fallen significantly but may continue declining.
+
+Red flags include:
+
+- Continuous revenue contraction.
+- Negative operating cash flow.
+- Unsustainable debt.
+- Liquidity problems.
+- Repeated equity dilution.
+- Accounting concerns.
+- Losing competitive advantage.
+- Permanent customer losses.
+- Management credibility problems.
+- Bankruptcy or restructuring risk.
+- Irreversible industry disruption.
+
+Clearly explain why a company might never recover to its previous stock price.
+
+## 5. RECOVERY SCENARIO ANALYSIS
+
+For each promising company, prepare three scenarios.
+
+| Scenario | Description |
+|---|---|
+| Bear case | Business continues deteriorating |
+| Base case | Business stabilizes and grows moderately |
+| Bull case | Business recovers and achieves strong growth |
+
+For each scenario, estimate:
+
+- Revenue growth assumptions.
+- Profitability assumptions.
+- Expected valuation multiples.
+- Estimated share price.
+- Potential upside or downside.
+- Main catalysts.
+- Expected time horizon.
+
+Use transparent assumptions and explain the valuation methodology.
+
+Never present speculative price targets as guaranteed outcomes.
+
+## 6. FINAL STOCK RANKING
+
+After analyzing the qualifying companies, rank the 15 most interesting research candidates.
+
+Use this scoring framework:
+
+| Category | Weight |
+|---|---:|
+| Business quality | 20% |
+| Financial strength | 20% |
+| Valuation attractiveness | 20% |
+| Recovery potential | 15% |
+| Competitive advantage | 10% |
+| Management quality | 5% |
+| Risk profile | 10% |
+
+Score each company out of 100.
+
+Classify each stock:
+
+- Tier 1: Strong business, attractive valuation, credible recovery potential.
+- Tier 2: Interesting opportunity, but significant uncertainty.
+- Tier 3: Speculative recovery opportunity.
+- Avoid: Value trap or serious financial deterioration.
+
+## 7. FINAL OUTPUT FORMAT
+
+Deliver the research in the following order:
+
+1. Executive summary of the current US large-cap crash landscape.
+2. Complete list of qualifying stocks.
+3. Sector-wise breakdown of major losers.
+4. Top 15 stocks with the largest declines.
+5. Deep financial analysis of the most promising 15 companies.
+6. Detailed reasons behind each stock's crash.
+7. Value traps and companies to avoid.
+8. Bull, base, and bear recovery scenarios.
+9. Final ranking based on investment attractiveness.
+10. Five companies worth investigating further.
+
+For each of the five final candidates, answer:
+
+- Why has the stock fallen?
+- Is the decline justified?
+- Is the business fundamentally healthy?
+- Is the company financially stable?
+- Is the current valuation attractive?
+- What could trigger a recovery?
+- What could cause another major decline?
+- What is the realistic 1–3 year investment opportunity?
+
+## 8. RESEARCH QUALITY REQUIREMENTS
+
+Use reliable, up-to-date sources:
+
+- SEC EDGAR filings (10-K, 10-Q, 8-K).
+- Official investor relations websites.
+- Quarterly earnings reports.
+- Earnings call transcripts.
+- Nasdaq.
+- Financial statements.
+- Reputable financial news.
+- Analyst reports where available.
+- Institutional ownership filings.
+
+Important rules:
+
+1. Use current market prices and market capitalization.
+2. Mention the exact date of every important financial metric.
+3. Do not fabricate stock prices, financial ratios, earnings, or forecasts.
+4. Provide source links for important claims.
+5. Cross-check significant negative events.
+6. Do not confuse a 40% decline from an all-time high with a 40% recent crash.
+7. Include delisted or bankrupt companies only in a separate historical cautionary section, not in the current stock shortlist.
+8. If information is unavailable, explicitly state that.
+9. Do not stop after identifying the first 10 companies. Aim for comprehensive market coverage.
+10. Do not recommend a stock solely because it is down significantly.
+
+**FINAL OBJECTIVE**
+
+I want to discover high-quality large-cap companies that the market has punished severely, where the underlying business may still have strong long-term potential.
+
+Think like a disciplined value investor searching for opportunities during periods of extreme market pessimism.
+
+Prioritize business fundamentals, financial survival, valuation, and realistic recovery potential over the size of the stock price decline.

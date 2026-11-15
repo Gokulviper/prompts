@@ -1,0 +1,57 @@
+Prompt 1 – Complete stock universe
+
+Find all eligible US-listed stocks trading below $1.
+
+
+
+Prompt 2 – Recent crash detector
+
+Identify stocks that have recently fallen significantly.
+
+
+
+Prompt 3 – Crash investigation
+
+Discover exactly why each stock declined.
+
+
+
+Prompt 4 – Turnaround & corporate action detector
+
+Find layoffs, restructuring, new contracts, funding and business improvements.
+
+
+
+Prompt 5 – Financial survival & dilution analysis
+
+Eliminate companies with dangerous financial conditions.
+
+
+
+Prompt 6 – Business recovery vs stock recovery
+
+Find businesses improving while their stock prices remain depressed.
+
+
+
+Prompt 7 – News & upcoming catalyst scanner
+
+Find events that could trigger sudden price movements.
+
+
+
+Prompt 8 – Volume & technical swing scanner
+
+Find early momentum and breakout setups.
+
+
+
+Prompt 9 – Deep research on shortlisted stocks
+
+Conduct detailed company-specific research.
+
+
+
+Prompt 10 – Final Banger ranking
+
+Rank the best opportunities with entry, targets, stop-loss and risk/reward.

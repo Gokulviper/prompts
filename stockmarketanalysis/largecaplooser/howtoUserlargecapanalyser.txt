@@ -1,0 +1,13 @@
+* first list out the largecap lossers 
+* then filter out the recoveringcompanies
+* divergent analysis help each comapny is reallly recovering, business improving but stokc price is still low that is oppurtunity 
+* once you finalized the comapny deep analyse everthing about the company 
+
+
+How this improves your overall system
+Your filtering system now has a much more useful distinction:
+Business condition	Stock condition	Priority
+Improving	     Still depressed	Highest
+Stable	          Still depressed	High
+Improving	     Recovering	        Medium
+Deteriorating	 Still depressed	Avoid
